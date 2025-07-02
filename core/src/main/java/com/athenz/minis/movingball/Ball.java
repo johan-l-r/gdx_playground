@@ -22,8 +22,8 @@ public class Ball {
 
 		// set random position for the ball
 		this.position = new Vector2(
-			MathUtils.random(0, Gdx.graphics.getWidth()),
-			MathUtils.random(0, Gdx.graphics.getHeight())
+			MathUtils.random(0, Gdx.graphics.getWidth() - this.radius),
+			MathUtils.random(0, Gdx.graphics.getHeight() - this.radius)
 		);
 
 		// set random direction to change movement
