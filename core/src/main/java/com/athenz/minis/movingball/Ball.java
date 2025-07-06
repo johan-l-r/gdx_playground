@@ -29,10 +29,12 @@ public class Ball {
   }
 
   public void update(float delta) {
-    if(this.position.x < 0) this.direction.x *= -1;
-    if(this.position.y < 0) this.direction.y *= -1;
-    if(this.position.x > Gdx.graphics.getBackBufferWidth()) this.direction.x *= -1;
-    if(this.position.y > Gdx.graphics.getBackBufferHeight()) this.direction.y *= -1;
+    // `+ this.radius` ensures half of the ball doesn't go outside of the left and bottom borders
+    if(this.position.x < 0 + this.radius) this.direction.x *= -1;
+    if(this.position.y < 0 + this.radius) this.direction.y *= -1;
+    // `- this.radius` ensures half of the ball doesn't go outside of the right and top borders
+    if(this.position.x > Gdx.graphics.getBackBufferWidth() - this.radius) this.direction.x *= -1;
+    if(this.position.y > Gdx.graphics.getBackBufferHeight() - this.radius) this.direction.y *= -1;
 
     // use delta to ensure frame rate independent movement
     this.position.add(
